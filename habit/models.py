@@ -1,6 +1,7 @@
 from django.db import models
 
 from config.settings import NULLABLE
+from habit.validation import validate_related_habit_and_reward
 from users.models import User
 
 
@@ -69,6 +70,10 @@ class Habit(models.Model):
         default=False,
         verbose_name='Публичность привычки'
     )
+
+    def clean(self):
+        """Проверка, что нельзя заполнять одновременно и связанное действие, и вознаграждение."""
+        validate_related_habit_and_reward(self)
 
     def __str__(self):
         return self.name
