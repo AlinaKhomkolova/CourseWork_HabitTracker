@@ -1,5 +1,4 @@
-from django.contrib.auth.base_user import BaseUserManager
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
 
 from config.settings import NULLABLE
@@ -21,15 +20,17 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class User(AbstractUser):
+class User(AbstractBaseUser):
     """Модель пользователя"""
     first_name = models.CharField(
         max_length=150,
-        verbose_name='Фамилия пользователя'
+        verbose_name='Фамилия пользователя',
+        **NULLABLE
     )
     last_name = models.CharField(
         max_length=150,
-        verbose_name='Имя пользователя'
+        verbose_name='Имя пользователя',
+        **NULLABLE
     )
     email = models.EmailField(
         unique=True,
@@ -38,6 +39,11 @@ class User(AbstractUser):
     city = models.CharField(
         max_length=150,
         verbose_name='Город проживания пользователя',
+        **NULLABLE
+    )
+    token = models.CharField(
+        max_length=100,
+        verbose_name='Токен',
         **NULLABLE
     )
 

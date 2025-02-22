@@ -3,3 +3,8 @@ python-dotenv
 psycopg2-binary
 djangorestframework
 djangorestframework-simplejwt
+django-cors-headers
+django-filter
+drf_yasg
+coverage
+requests
