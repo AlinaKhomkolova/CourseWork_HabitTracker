@@ -27,12 +27,12 @@ class HabitListView(generics.ListAPIView):
         """
         Возвращает список привычек:
          - Если пользователь — администратор, он видит все привычки.
-        - Если обычный пользователь, он видит только свои привычки.
+        - Если обычный пользователь, он видит только свои привычки и публичные
         """
         user = self.request.user
         if user.is_staff:
             return Habit.objects.all()
-        return Habit.objects.filter(owner=user)
+        return Habit.objects.filter(owner=user) | Habit.objects.filer(is_public=True)
 
 
 class HabitRetrieveAPIView(generics.RetrieveAPIView):

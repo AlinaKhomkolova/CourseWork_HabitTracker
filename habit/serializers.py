@@ -8,7 +8,6 @@ class HabitSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, data):
-        """Переопределяем метод для проверки специфичных данных."""
         habit = Habit(**data)
         habit.clean()  # Вызовем кастомную валидацию для этой привычки
         return data

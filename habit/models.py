@@ -1,17 +1,13 @@
 from django.db import models
 
 from config.settings import NULLABLE
-from habit.validation import validate_related_habit_and_reward
+from habit.validation import validate_related_habit_and_reward, validate_time_to_complete, \
+    validate_related_habit_is_pleasant, validate_frequency_max_7_days, validate_frequency_min_7_days, \
+    validate_pleasant_habit
 from users.models import User
 
 
-# Create your models here.
 class Habit(models.Model):
-    HABIT_TYPE_CHOICES = [
-        ('Полезная', 'Полезная'),
-        ('Приятная', 'Приятная'),
-    ]
-
     # Пользователь — создатель привычки
     owner = models.ForeignKey(
         User,
@@ -24,24 +20,19 @@ class Habit(models.Model):
         max_length=250,
         verbose_name='Название привычки'
     )
-    habit_type = models.CharField(
-        max_length=10,
-        choices=HABIT_TYPE_CHOICES,
-        default='Полезная',
-        verbose_name='Тип привычки'
-    )
     place = models.CharField(
         max_length=255,
         verbose_name='Место выполнения привычки',
         **NULLABLE
     )
     time = models.TimeField(
-        verbose_name='Время выполнения привычки'
+        verbose_name='Время, когда необходимо выполнять привычку.'
     )
     action = models.CharField(
         max_length=255,
         verbose_name='Описание действия'
     )
+    # Полезная=False, Приятная=True
     is_pleasant_habit = models.BooleanField(
         default=False,
         verbose_name='Является ли привычка приятной'
@@ -51,19 +42,24 @@ class Habit(models.Model):
         'self',
         on_delete=models.SET_NULL,
         related_name='related_habits',
+        **NULLABLE,
+    )
+    frequency = models.IntegerField(
+        default=1,
+        verbose_name='Периодичность(Сколько раз в неделю)'
+    )
+    last_completed_frequency = models.DateTimeField(
+        verbose_name='Дата последнего выполнения привычки',
         **NULLABLE
     )
-    frequency = models.CharField(
-        max_length=50,
-        default='Ежедневно',
-        verbose_name='Периодичность'
-    )
+
     reward = models.CharField(
         max_length=255,
-        verbose_name='Вознаграждение'
+        verbose_name='Вознаграждение',
+        **NULLABLE
     )
     time_to_complete = models.DurationField(
-        verbose_name='Время на выполнение привычки'
+        verbose_name='Время на выполнение привычки',
     )
     # Булевое поле, которое позволяет сделать привычку публичной.
     is_public = models.BooleanField(
@@ -72,8 +68,12 @@ class Habit(models.Model):
     )
 
     def clean(self):
-        """Проверка, что нельзя заполнять одновременно и связанное действие, и вознаграждение."""
         validate_related_habit_and_reward(self)
+        validate_time_to_complete(self)
+        validate_related_habit_is_pleasant(self)
+        validate_pleasant_habit(self)
+        validate_frequency_min_7_days(self)
+        validate_frequency_max_7_days(self)
 
     def __str__(self):
         return self.name

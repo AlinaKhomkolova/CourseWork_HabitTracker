@@ -8,3 +8,5 @@ django-filter
 drf_yasg
 coverage
 requests
+pytest
+pytest_djangoapp

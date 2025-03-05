@@ -143,6 +143,11 @@ REST_FRAMEWORK = {
 
     # для всех пользователь
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny', ],
+
+    'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer', ],
+    # Пагинация
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5
 }
 
 # Настройки срока действия токенов
@@ -154,15 +159,14 @@ SIMPLE_JWT = {
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
-#
-# # Frontend
-# CORS_ALLOWED_ORIGINS = [
-#     "https://read-only.example.com",
-#     "https://read-and-write.example.com",
-# ]
-#
-# # Backend
-# CSRF_TRUSTED_ORIGINS = [
-#     "https://read-and-write.example.com",
-# ]
 
+# Frontend
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+# Backend
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]

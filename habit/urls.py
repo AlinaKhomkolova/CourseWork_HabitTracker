@@ -1,6 +1,9 @@
 from django.urls import path
 
+from .apps import HabitConfig
 from .views import HabitCreateView, HabitListView, HabitRetrieveAPIView, HabitDestroyAPIView
+
+app_name = HabitConfig.name
 
 urlpatterns = [
     # Просмотр всех привычек
