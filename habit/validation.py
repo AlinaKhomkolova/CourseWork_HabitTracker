@@ -1,11 +1,8 @@
 from datetime import timedelta
 
-import django
+from django.apps import apps
 from django.core.exceptions import ValidationError
 from django.utils import timezone
-
-django.setup()
-from django.apps import apps
 
 
 def validate_related_habit_and_reward(habit):
@@ -51,7 +48,6 @@ def validate_frequency_min_7_days(habit):
         raise ValidationError('Периодичность привычки должна быть не реже 1 раза в 7 дней.')
     if habit.frequency > 7:
         raise ValidationError('Периодичность привычки должна быть больше 7 раз в 7 дней.')
-
 
 
 def validate_frequency_max_7_days(habit):

@@ -1,0 +1,19 @@
+[
+  {
+    "model": "habit.habit",
+    "fields": {
+      "owner": 36,
+      "name": "Привычка 36",
+      "place": null,
+      "time": "10:00:15",
+      "action": "Описание действия",
+      "is_pleasant_habit": false,
+      "related_habit": null,
+      "frequency": 1,
+      "last_completed_frequency": null,
+      "reward": null,
+      "time_to_complete": "0:10:00",
+      "is_public": false
+    }
+  }
+]

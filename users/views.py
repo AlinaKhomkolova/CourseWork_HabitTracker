@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from habit.paginators import MaterialsPagination
 from users.models import User
 from users.serializers import UserSerializer
 
@@ -20,6 +21,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     # Ограничение, чтобы выводились только данный для текущего пользователя
     permission_classes = [IsAuthenticated]
+    pagination_class = MaterialsPagination
 
     def get_queryset(self):
         """

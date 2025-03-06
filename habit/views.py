@@ -2,11 +2,13 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Habit
+from .paginators import MaterialsPagination
 from .permissions import IsOwnerOrStaff
 from .serializers import HabitSerializer
 
 
 class HabitCreateView(generics.CreateAPIView):
+    """Создание привычки"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated]
@@ -19,9 +21,11 @@ class HabitCreateView(generics.CreateAPIView):
 
 
 class HabitListView(generics.ListAPIView):
+    """Просмотр всех привычек"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = MaterialsPagination
 
     def get_queryset(self):
         """

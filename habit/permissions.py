@@ -23,7 +23,7 @@ class IsOwnerOrStaff(BasePermission):
 
         return True
 
-    def has_object_permission(self, request, obj):
+    def has_object_permission(self, request, view, obj):
         """Проверяем доступ к определенному объекту"""
         if request.user.is_staff:
             return True  # Администратор имеет доступ

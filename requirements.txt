@@ -10,3 +10,7 @@ coverage
 requests
 pytest
 pytest_djangoapp
+celery
+redis
+django-celery-beat
+django-cors-headers
