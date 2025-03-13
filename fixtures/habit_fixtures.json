@@ -1,0 +1,114 @@
+[
+  {
+    "model": "habit.habit",
+    "pk": 1,
+    "fields": {
+      "owner": 1,
+      "name": "Утренняя зарядка",
+      "place": "Дом",
+      "time": "07:00:00",
+      "action": "Сделать 10 минут разминки",
+      "is_pleasant_habit": false,
+      "frequency": 7,
+      "reward": "Чашка кофе",
+      "time_to_complete": "00:10:00",
+      "is_public": true
+    }
+  },
+  {
+    "model": "habit.habit",
+    "pk": 2,
+    "fields": {
+      "owner": 2,
+      "name": "Чтение книг",
+      "place": "Кафе",
+      "time": "20:00:00",
+      "action": "Читать 30 минут",
+      "is_pleasant_habit": true,
+      "frequency": 3,
+      "reward": "Десерт",
+      "time_to_complete": "00:30:00",
+      "is_public": false
+    }
+  },
+  {
+    "model": "habit.habit",
+    "pk": 3,
+    "fields": {
+      "owner": 3,
+      "name": "Медитация",
+      "place": "Спальня",
+      "time": "06:30:00",
+      "action": "Медитировать 15 минут",
+      "is_pleasant_habit": true,
+      "frequency": 7,
+      "reward": "Спокойствие",
+      "time_to_complete": "00:15:00",
+      "is_public": true
+    }
+  },
+  {
+    "model": "habit.habit",
+    "pk": 4,
+    "fields": {
+      "owner": 1,
+      "name": "Ведение дневника",
+      "place": "Кабинет",
+      "time": "21:00:00",
+      "action": "Записывать события дня",
+      "is_pleasant_habit": false,
+      "frequency": 5,
+      "reward": "Чувство организованности",
+      "time_to_complete": "00:20:00",
+      "is_public": false
+    }
+  },
+  {
+    "model": "habit.habit",
+    "pk": 5,
+    "fields": {
+      "owner": 2,
+      "name": "Бег",
+      "place": "Стадион",
+      "time": "07:30:00",
+      "action": "Пробежать 3 км",
+      "is_pleasant_habit": false,
+      "frequency": 4,
+      "reward": "Протеиновый батончик",
+      "time_to_complete": "00:30:00",
+      "is_public": true
+    }
+  },
+  {
+    "model": "habit.habit",
+    "pk": 6,
+    "fields": {
+      "owner": 3,
+      "name": "Изучение английского",
+      "place": "Дома",
+      "time": "19:00:00",
+      "action": "Слушать подкасты на английском 20 минут",
+      "is_pleasant_habit": false,
+      "frequency": 6,
+      "reward": "Просмотр серии любимого сериала",
+      "time_to_complete": "00:20:00",
+      "is_public": false
+    }
+  },
+  {
+    "model": "habit.habit",
+    "pk": 7,
+    "fields": {
+      "owner": 1,
+      "name": "Пить воду",
+      "place": "Везде",
+      "time": "09:00:00",
+      "action": "Выпить стакан воды",
+      "is_pleasant_habit": true,
+      "frequency": 7,
+      "reward": "Ощущение бодрости",
+      "time_to_complete": "00:02:00",
+      "is_public": true
+    }
+  }
+]

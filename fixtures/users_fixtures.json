@@ -1,0 +1,24 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "first_name": "Иван",
+      "last_name": "Иванов",
+      "email": "ivan@example.com",
+      "city": "Москва",
+      "token": "token123"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "first_name": "Петр",
+      "last_name": "Петров",
+      "email": "petr@example.com",
+      "city": "Санкт-Петербург",
+      "token": "token456"
+    }
+  }
+]
